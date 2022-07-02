@@ -30,12 +30,16 @@ namespace WebApplication.DAL
 
             if (user != null)
             {
-                var u = _context.UserCoffeePreferences.SingleOrDefault(preference => preference.UserId == user.UserId);
+                var u = _context.UserCoffeePreferences.FirstOrDefault(preference => preference.UserId == user.UserId); // dont use SingleOrDefault coz multiple record same UserId
+                if (u == null)
+                {
+                    _context.UserCoffeePreferences.Add(new UserCoffeePreference { UserId = user.UserId, AustralianCoffeeSearch = 1 });
+                }
                 if (u != null)
                 {
                     u.AustralianCoffeeSearch++;
-                    _context.SaveChanges();
                 }
+                _context.SaveChanges();
             }
 
             return types;
