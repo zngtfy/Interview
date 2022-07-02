@@ -43,8 +43,8 @@ namespace WebApplication.Controllers
         {
             var user = new User { UserId = 1 };
             //user = null;
-            _dal.SearchAustralianCoffeeTypes(user);
-            return Ok();
+            var res = _dal.SearchAustralianCoffeeTypes(user);
+            return Ok(res);
         }
 
         [HttpGet("IncreasePrices")]
@@ -54,6 +54,20 @@ namespace WebApplication.Controllers
             double percentage = 0;
             _dal.IncreasePrices(coffeeTypes, percentage);
             return Ok();
+        }
+
+        [HttpGet("GetAmericanCoffeePrice")]
+        public IActionResult GetAmericanCoffeePrice()
+        {
+            var res = _dal.GetAmericanCoffeePrice();
+            return Ok(res);
+        }
+
+        [HttpGet("GetVietnameseCoffeeTypes")]
+        public IActionResult GetVietnameseCoffeeTypes()
+        {
+            var res = _dal.GetVietnameseCoffeeTypes();
+            return Ok(res);
         }
 
         private ExampleDataAccessLayer _dal;
