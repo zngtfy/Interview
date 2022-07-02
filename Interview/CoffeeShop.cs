@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Interview.DAL.Models;
+using System.Collections.Generic;
 
 namespace Interview
 {
@@ -97,14 +98,6 @@ namespace Interview
 
         private Dictionary<int, double> _dicBeanType;
         private Dictionary<int, double> _dicCoffeeSize;
-    }
-
-    public class CoffeeOrder
-    {
-        public BeanType BeanType { get; set; }
-        public bool IsDoubleShot { get; set; }
-        public bool HasMilk { get; set; }
-        public CoffeeSize Size { get; set; }
     }
 
     public enum BeanType
