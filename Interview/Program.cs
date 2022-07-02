@@ -6,9 +6,10 @@ namespace Interview
     {
         static void Main(string[] args)
         {
-            var order = new CoffeeOrder();
+            var order = new CoffeeOrder { BeanType = BeanType.Japanese };
             var shop = new CoffeeShop();
-            shop.CalculateCoffeeCost(order);
+            //shop.CalculateCoffeeCost(order);
+            shop.CalculateCoffeeCostImprove(order);
 
             Console.WriteLine("Hello World!");
         }
