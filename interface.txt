@@ -1,0 +1,39 @@
+-- 1. GetVietnameseCoffeeTypes
+i found something this GetVietnameseCoffeeTypes method
+the first one is method is not generic
+we should add 1 parameter string coutryName
+second : the return type IEnumable make client confuses, we should the 
+IList or IQueryable.
+IList: return data in memory
+IQueryable: return a query
+
+-- 2. GetAmericanCoffeePrice
+method GetAmericanCoffeePrice same issue with GetVietnameseCoffeeTypes 
+and performane issue because use ToList() will get all data from DB to membory
+but we use 1 record
+we show imporve add parameter contryName, and rename method GetCoffeePriceByCountryName
+use Select method select 1 property Price, use FirstOrDetaul so that we can optimze the query
+
+-- 3. SearchAustralianCoffeeTypes
+the parameter user, we only use UserId, we should change parameter to userId
+this is method is not generic -> we should add parameter contryName
+it has performane issue, because it call private method get all data in memmory 
+-> we update date return type of GetAllCoffeeTypes method to IQueryable
+
+entity UserCoffeePreference is not generic 
+-> we should make it generic, change property name AutrainCoffeeSearch to CoffeeSearch
+and add new property ContryName 
+then we should change condition SingleOrDefault && by contryName
+
+-- 4. IncreasePrices
+we should valiate before excute
+should all data before use in foreach
+cast value may lost data or throw exception, because double max value is greater than decimal max value
+move out _context.SaveChanges(); foreach
+
+
+-- có 2 user  search cùng lúc thì làm sao số lượng search van đúng.
+
+--- quna trong IEnumable (k ToList() , sao Where roi ToList(), thì call
+cau try van van co Where AsQueryable ( check voi SQL profiler)
+ 

@@ -13,7 +13,7 @@ namespace WebApplication.DAL
             _context = context;
         }
 
-        public IEnumerable<CoffeeType> GetVietnameseCoffeeTypes()
+        public IEnumerable<CoffeeType> GetVietnameseCoffeeTypes(string countryName)
         {
             return GetAllCoffeeTypes("Vietnam").ToList();
         }
@@ -47,6 +47,7 @@ namespace WebApplication.DAL
 
         public void IncreasePrices(IEnumerable<CoffeeType> coffeeTypes, double percentage)
         {
+
             if (coffeeTypes == null || coffeeTypes.Count() == 0 || percentage == 0)
             {
                 return;

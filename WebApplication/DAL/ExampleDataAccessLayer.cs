@@ -13,27 +13,30 @@ namespace WebApplication.DAL
             _context = context;
         }
 
-        public IEnumerable<CoffeeType> GetVietnameseCoffeeTypes()
+        public IEnumerable<CoffeeType> GetCoffeeTypeByContryName(string contruyName)
         {
-            return _context.CoffeeTypes.Where(ct => ct.CountryOfOrigin == "Vietnam");
+            return _context.CoffeeTypes.Where(ct => ct.CountryOfOrigin == contruyName);
         }
 
-        public decimal GetAmericanCoffeePrice()
+        public decimal GetCoffeePriceByCountry(string contruyName)
         {
-            var americanCoffees = _context.CoffeeTypes.Where(ct => ct.CountryOfOrigin == "America").ToList();
-            return americanCoffees[0].Price;
+            var price = _context.CoffeeTypes.Where(ct => ct.CountryOfOrigin == contruyName).Select(p => p.Price).FirstOrDefault();
+            return price;
         }
 
-        public IEnumerable<CoffeeType> SearchAustralianCoffeeTypes(User user)
+        public IList<CoffeeType> SearchCoffeeTypeByContryName(int userId, string countryName)
         {
             var types = GetAllCoffeeTypes()
-                .Where(ct => ct.CountryOfOrigin == "Australia")
-                .ToList()
-                .AsReadOnly();
+                .Where(ct => ct.CountryOfOrigin == countryName)
+                .ToList().AsReadOnly();
 
-            var u = _context.UserCoffeePreferences.SingleOrDefault(preference => preference.UserId == user.UserId);
-            u.AustralianCoffeeSearch++;
-            _context.SaveChanges();
+            var coffeePreference = _context.UserCoffeePreferences
+                .SingleOrDefault(preference => preference.UserId == userId && preference.ContryName == countryName);
+            if (coffeePreference != null)
+            {
+                coffeePreference.CoffeeSearch++;
+                _context.SaveChanges();
+            }
             return types;
         }
 
@@ -43,13 +46,18 @@ namespace WebApplication.DAL
             {
                 var type = _context.CoffeeTypes.Single(ct => ct.CoffeeTypeId == coffeeType.CoffeeTypeId);
                 type.Price *= 1 + (decimal)percentage;
-                _context.SaveChanges();
             }
+
+            var max = double.MaxValue;
+            var maxd = decimal.MaxValue;
+
+            // batch
+            _context.SaveChanges();
         }
 
-        private IEnumerable<CoffeeType> GetAllCoffeeTypes()
+        private IQueryable<CoffeeType> GetAllCoffeeTypes()
         {
-            return _context.CoffeeTypes.ToList();
+            return _context.CoffeeTypes;
         }
     }
 }
