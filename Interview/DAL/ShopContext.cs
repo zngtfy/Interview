@@ -7,6 +7,8 @@ namespace Interview.DAL
     {
         public ShopContext() { }
 
+        public ShopContext(DbContextOptions<ShopContext> options) : base(options) { }
+
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<CoffeeType> CoffeeTypes { get; set; }
         public virtual DbSet<UserCoffeePreference> UserCoffeePreferences { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Interview.DAL.Models;
+using System;
 
 namespace Interview
 {
