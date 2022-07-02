@@ -17,6 +17,7 @@ namespace Interview
     {
         public CoffeeShop()
         {
+            // Add coefficient here or load from DB for BeanType
             _dicBeanType = new Dictionary<int, double>
             {
                 { (int)BeanType.Vietnamese, 2.5 },
@@ -24,6 +25,7 @@ namespace Interview
                 { (int)BeanType.Canadian, 2.1 }
             };
 
+            // Add coefficient here or load from DB for CoffeeSize
             _dicCoffeeSize = new Dictionary<int, double>
             {
                 { (int)CoffeeSize.Medium, 1.0 },
