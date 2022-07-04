@@ -1,39 +1,35 @@
 -- 1. GetVietnameseCoffeeTypes
-i found something this GetVietnameseCoffeeTypes method
-the first one is method is not generic
-we should add 1 parameter string coutryName
-second : the return type IEnumable make client confuses, we should the 
-IList or IQueryable.
+I found some issue with GetVietnameseCoffeeTypes method
+First, it is not generic -> We should add a parameter countryName & rename method to GetCoffeeTypesByCountryName
+Second, the return type IEnumerable make client confuses -> We should use IList or IQueryable.
 IList: return data in memory
 IQueryable: return a query
 
 -- 2. GetAmericanCoffeePrice
-method GetAmericanCoffeePrice same issue with GetVietnameseCoffeeTypes 
-and performane issue because use ToList() will get all data from DB to membory
-but we use 1 record
-we show imporve add parameter contryName, and rename method GetCoffeePriceByCountryName
-use Select method select 1 property Price, use FirstOrDetaul so that we can optimze the query
+Method GetAmericanCoffeePrice same issue with first one method & rename method to GetCoffeePriceByCountryName
+It has performance issue with ToList(), because we take 1 record with 1 property Price
+-> We should use Select 1 property Price then use FirstOrDefault, so that we can optimize the query
 
 -- 3. SearchAustralianCoffeeTypes
-the parameter user, we only use UserId, we should change parameter to userId
-this is method is not generic -> we should add parameter contryName
-it has performane issue, because it call private method get all data in memmory 
--> we update date return type of GetAllCoffeeTypes method to IQueryable
+The parameter user, we only use UserId, we should change parameter to userId
+This method is not generic -> We should add a parameter countryName
+It has performance issue, because it call private method GetAllCoffeeTypes that gets all data in memory
+-> We should update return type of GetAllCoffeeTypes method to IQueryable and remove ToList()
 
-entity UserCoffeePreference is not generic 
--> we should make it generic, change property name AutrainCoffeeSearch to CoffeeSearch
-and add new property ContryName 
-then we should change condition SingleOrDefault && by contryName
+Entity UserCoffeePreference is not generic also
+-> We should make it generic, change property name AustralianCoffeeSearch to CoffeeSearch and new property ContryName.
+And then we update condition SingleOrDefault with ContryName.
+
+Shouldn't use variable name not clear -> We should change u to coffeePreference and check null it before we use
+In this case, if coffeePreference is null we should add new UserCoffeePreference.
 
 -- 4. IncreasePrices
-we should valiate before excute
-should all data before use in foreach
-cast value may lost data or throw exception, because double max value is greater than decimal max value
-move out _context.SaveChanges(); foreach
+We should validate parameter before execute
+We should get all exist data in DB before use in foreach
+Cast value may lost data or throw exception, because double max value is greater than decimal max value
+Move _context.SaveChanges() out foreach loop
 
-
--- có 2 user  search cùng lúc thì làm sao số lượng search van đúng.
-
+------------------------------------------------------
+-- có 2 user search cùng lúc thì làm sao số lượng search van đúng.
 --- quna trong IEnumable (k ToList() , sao Where roi ToList(), thì call
 cau try van van co Where AsQueryable ( check voi SQL profiler)
- 
