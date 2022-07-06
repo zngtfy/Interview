@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -53,8 +54,12 @@ namespace WebApplication.Controllers
         public async Task<IActionResult> IncreasePrices1(int price)
         {
             List<CoffeeType> coffeeTypes = null;
-            Thread.Sleep(1000);
+            var rand = new Random();
+            var i = rand.Next(100, 1000);
+            Thread.Sleep(i);
             _dal.IncreasePrices(coffeeTypes, price);
+            var i = rand.Next(100, 1000);
+            Thread.Sleep(i);
             return Ok(Task.FromResult("ok"));
         }
 
