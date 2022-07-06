@@ -67,6 +67,15 @@ namespace WebApplication.Controllers
             return Ok(Task.FromResult("ok"));
         }
 
+        [HttpGet("IncreasePrices3")]
+        public async Task<IActionResult> IncreasePrices3(int price)
+        {
+            List<CoffeeType> coffeeTypes = null;
+            Thread.Sleep(3000);
+            _dal.IncreasePrices(coffeeTypes, price);
+            return Ok(Task.FromResult("ok"));
+        }
+
         [HttpGet("GetAmericanCoffeePrice")]
         public IActionResult GetAmericanCoffeePrice()
         {
