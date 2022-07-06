@@ -37,12 +37,13 @@ namespace WebApplication.DAL
             return types;
         }
 
-        public void IncreasePrices(IEnumerable<CoffeeType> coffeeTypes, double percentage)
+        public void IncreasePrices(IEnumerable<CoffeeType> coffeeTypes, decimal percentage)
         {
+            coffeeTypes = _context.CoffeeTypes.ToList();
             foreach (var coffeeType in coffeeTypes)
             {
                 var type = _context.CoffeeTypes.Single(ct => ct.CoffeeTypeId == coffeeType.CoffeeTypeId);
-                type.Price *= 1 + (decimal)percentage;
+                type.Price += percentage;
                 _context.SaveChanges();
             }
         }

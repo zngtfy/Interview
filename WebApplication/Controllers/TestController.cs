@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using WebApplication.DAL;
 using WebApplication.DAL.Models;
 
@@ -48,12 +49,11 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet("IncreasePrices")]
-        public IActionResult IncreasePrices()
+        public async Task<IActionResult> IncreasePrices(int price)
         {
             List<CoffeeType> coffeeTypes = null;
-            double percentage = 0;
-            _dal.IncreasePrices(coffeeTypes, percentage);
-            return Ok();
+            _dal.IncreasePrices(coffeeTypes, price);
+            return Ok(Task.FromResult("ok"));
         }
 
         [HttpGet("GetAmericanCoffeePrice")]
