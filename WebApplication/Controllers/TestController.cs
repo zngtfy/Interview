@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using WebApplication.DAL;
 using WebApplication.DAL.Models;
@@ -48,10 +49,20 @@ namespace WebApplication.Controllers
             return Ok(res);
         }
 
-        [HttpGet("IncreasePrices")]
-        public async Task<IActionResult> IncreasePrices(int price)
+        [HttpGet("IncreasePrices1")]
+        public async Task<IActionResult> IncreasePrices1(int price)
         {
             List<CoffeeType> coffeeTypes = null;
+            Thread.Sleep(1000);
+            _dal.IncreasePrices(coffeeTypes, price);
+            return Ok(Task.FromResult("ok"));
+        }
+
+        [HttpGet("IncreasePrices2")]
+        public async Task<IActionResult> IncreasePrices2(int price)
+        {
+            List<CoffeeType> coffeeTypes = null;
+            Thread.Sleep(2000);
             _dal.IncreasePrices(coffeeTypes, price);
             return Ok(Task.FromResult("ok"));
         }
