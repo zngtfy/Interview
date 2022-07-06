@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using WebApplication.DAL.Models;
 
@@ -39,7 +40,11 @@ namespace WebApplication.DAL
 
         public void IncreasePrices(IEnumerable<CoffeeType> coffeeTypes, decimal percentage)
         {
-            coffeeTypes = _context.CoffeeTypes.ToList();
+            var sql = "UPDATE [dbo].[CoffeeTypes] SET Price = Price + 1;";
+            _context.Database.ExecuteSqlRaw(sql);
+            return;
+
+            //coffeeTypes = _context.CoffeeTypes.ToList();
             foreach (var coffeeType in coffeeTypes)
             {
                 var type = _context.CoffeeTypes.Single(ct => ct.CoffeeTypeId == coffeeType.CoffeeTypeId);
