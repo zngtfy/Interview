@@ -55,10 +55,10 @@ namespace WebApplication.Controllers
         {
             List<CoffeeType> coffeeTypes = null;
             var rand = new Random();
-            var i = rand.Next(100, 1000);
+            var i = rand.Next(100, 500);
             Thread.Sleep(i);
             _dal.IncreasePrices(coffeeTypes, price);
-            var i = rand.Next(100, 1000);
+            i = rand.Next(100, 500);
             Thread.Sleep(i);
             return Ok(Task.FromResult("ok"));
         }

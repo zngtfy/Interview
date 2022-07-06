@@ -25,7 +25,7 @@ namespace WebApplication
             {
                 string connectstring = Configuration.GetConnectionString("coffeeshop");
                 options.UseSqlServer(connectstring);
-            }, ServiceLifetime.Transient);
+            }, ServiceLifetime.Scoped);
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
