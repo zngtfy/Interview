@@ -2,6 +2,9 @@ Hello, My name’s Toan
 I have 8 years experience with .NET
 I’m good in logical thinking
 I always have can-do attitude
+I can review code, training member, research new technology
+
+I will go from top to bottom
 
 -- 1. GetVietnameseCoffeeTypes
 I found some issue with GetVietnameseCoffeeTypes method
@@ -38,3 +41,6 @@ Move _context.SaveChanges() out foreach loop
 -- có 2 user search cùng lúc thì làm sao số lượng search van đúng.
 --- quna trong IEnumable (k ToList() , sao Where roi ToList(), thì call
 cau try van van co Where AsQueryable ( check voi SQL profiler)
+
+Single-responsibility principle
+Open-closed principle
