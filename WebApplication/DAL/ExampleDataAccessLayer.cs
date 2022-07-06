@@ -44,8 +44,8 @@ namespace WebApplication.DAL
             {
                 var type = _context.CoffeeTypes.Single(ct => ct.CoffeeTypeId == coffeeType.CoffeeTypeId);
                 type.Price += percentage;
-                _context.SaveChanges();
             }
+            _context.SaveChanges();
         }
 
         private IEnumerable<CoffeeType> GetAllCoffeeTypes()
