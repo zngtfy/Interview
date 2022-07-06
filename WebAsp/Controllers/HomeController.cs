@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace WebAsp.Controllers
 {
     public class HomeController : Controller
     {
+        private ExampleDataAccessLayer _dal;
+
+        private coffeeshopEntities _db;
+
+
+
         public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
-
+            _dal = new ExampleDataAccessLayer();
+            _dal.IncreasePrices(null, 1);
             return View();
         }
+
+
     }
 }
