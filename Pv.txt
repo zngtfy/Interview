@@ -1,0 +1,107 @@
+1. TELL ME ABOUT YOURSELF
+I have been a team leader for the last 5 years and specialize in helping companies design software architects,
+set up process deployment, set up servers in the cloud, and train new members.
+My strength is good logical thinking, good at teamwork, and always keeping a CAN-DO attitude.
+What I am looking for is a company that I could add value to, where I could join a strong team.
+Is this what CMC is looking for?
+
+2. OOP
+Object-Oriented Programming is about creating objects that contain both data and methods.
+It is faster and easier to execute.
+It provides a clear structure for the programs.
+It makes the code easier to maintain, modify and debug.
+It makes it possible to create full reusable applications with less code and shorter development time.
+
+A class is a template for objects, and an object is an instance of a class.
+A static method can be accessed without creating an object of the class
+
+Access modifier public: the code is accessible for all classes.
+Access modifier private: the code is only accessible within the same class.
+Access modifier protected: the code is accessible within the same class, or in a class that is inherited from that class.
+Access modifier internal: the code is only accessible within its assembly, but not from another assembly.
+
+Encapsulation makes sure that "sensitive" data is hidden from users.
+Inheritance is useful for code reusability: reuse fields and methods of an existing class when you create a new class.
+Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+Abstraction is the process of hiding certain details and showing only essential information to the user.
+
+3. DESIGN PATTERNS
+Design patterns are typical solutions to common problems in software design.
+Design patterns define a common language that you and your teammates can use to communicate more efficiently.
+Three main groups of patterns: Creational, Structural, Behavioral.
+E.g: Singleton is a creational pattern that lets you ensure that a class has only one instance.
+
+4. TEST-DRIVEN DEVELOPMENT
+When you do unit tests, you write a test after you write your code.
+Test-driven development approach is writing unit tests before writing code.
+You can do unit tests without doing test-driven development. However, you can not do test-driven development without using unit tests.
+E.g:
+
+5. .NET
+5.1. EAGER/LAZY LOADING
+Lazy loading delays the initialization of a resource. Related entities are loaded when the navigation property is accessed.
+Eager loading initializes or loads a resource as soon as the code is executed. Related entities are loaded as part of the initial query.
+Explicit loading - Related entities are loaded explicitly, not as part of the initial query, but at a later point in time.
+
+5.2. IENUMERABLE/IQUERYABLE
+The main difference between IEnumerable and IQueryable in C# is that IQueryable queries out-of-memory data stores, while IEnumerable queries in-memory data.
+Moreover, IQueryable is part of .NET's System.LINQ namespace, while IEnumerable is in System.Collections namespace.
+
+5.3. ASYNC/AWAIT
+When we are dealing with UI, and button clicks, we use a long-running method like reading a large file or something else which will take a long time.
+In that case, the entire application must wait to complete the whole task. In other words, if any process is blocked in the synchronous application,
+the whole application gets blocked, and our application stops responding until the whole task completes.
+Asynchronous programming is very helpful in this condition. By using Asynchronous programming,
+the application can continue with the other work that does not depend on the completion of the entire task.
+
+5.4. LINQ
+Language-Integrated Query (LINQ) is the name for a set of technologies based on the integration of query capabilities directly into the C# language.
+The LINQ family of technologies provides a consistent query experience for objects (LINQ to Objects), relational databases (LINQ to SQL), and XML (LINQ to XML).
+
+5.5. REF/OUT
+By default parameters are passed to a method by value.
+By using ref or out keywords we can pass a parameter by reference.
+Some differences between ref and out keyword in C#:
+
+REF
+The parameter must be initialized first before it is passed to ref.
+Before returning to the calling method, It is not required to assign or initialize the value of a parameter.
+
+OUT
+The parameter is not required to initialize before it is passed to out.
+Before returning to the calling method, it is required to assign or initialize the value of a parameter.
+
+5.6. VAR/DYNAMIC
+Some differences between var and dynamic keyword in C#:
+
+VAR
+It is introduced in C# 3.0
+The type of the variable is decided by the compiler at compile time.
+It cannot be used for properties or returning values from the method. It can only used as a local variable in method.	
+
+DYNAMIC
+It is introduced in C# 4.0
+The type of the variable is decided by the compiler at run time.
+It can be used for properties or returning values from the method.
+
+5.7. ACTION/FUNC/PREDICATE
+Action is a delegate (pointer) to a method, that takes zero, one or more input parameters, but does not return anything.
+Func is a delegate (pointer) to a method, that takes zero, one or more input parameters, and returns a value (or reference).
+Predicate is a special kind of Func often used for comparisons (takes a generic parameter and returns bool).
+A delegate is a type that represents references to methods with a particular parameter list and return type.
+
+5.8. USING
+The using statement causes the object itself to go out of scope as soon as Dispose method is called.
+Within the using block, the object is read-only and can't be modified or reassigned.
+A variable declared with a using declaration is read-only
+
+5.9. FILTERS
+Filters in ASP.NET Core allow code to run before or after specific stages in the request processing pipeline.
+Built-in filters handle tasks such as:
+Preventing access to resources a user isn't authorized for.
+Response caching. Error handling
+
+5.10. MIDDLEWARE
+It is an app pipeline to handle requests and responses. Each component:
+Chooses whether to pass the request to the next component in the pipeline.
+Can perform work before and after the next component in the pipeline.
