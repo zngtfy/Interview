@@ -1,0 +1,19 @@
+﻿@model NumberVm
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <form id="FrmMain" method="post" action="@Url.Action("Index", "Home")">
+        <div class="form-group">
+            <input class="form-control " asp-for="RequestNumber">
+        </div>
+        <div class="form-group">
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    <div>@Model.Result</div>
+</div>

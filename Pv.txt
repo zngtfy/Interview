@@ -1,9 +1,42 @@
 1. TELL ME ABOUT YOURSELF
+Hello
+I am Toan
 I have been a team leader for the last 5 years and specialize in helping companies design software architects,
 set up process deployment, set up servers in the cloud, and train new members.
+
+I have 8 years of experience in developing .NET using C# (6 years with .NET Framework and 2 years with .NET Core)
+I have been working with Design Pattern, the SOLID principle, Object Oriented Programming,
+SQL database, Git, Jira, Windows, Linux, Jenkins
+I have 2 years of experience in developing SPA (Angular 2, VueJS)
+I have been developing a Web application to track data and make a report using C#, MySQL
+Some old projects I did such as Facility Reservation System, Billing Request using C#, SQL Server
+IFS - ePortal (Supply Chain Financing, Invoice Factoring, Property Financing) using Salesforce, Java, PostgreSQL
+I developed the ERP application using Windows Form technology
+
+My strong programming language is C# but I can program with Java, C, JavaScript
 My strength is good logical thinking, good at teamwork, and always keeping a CAN-DO attitude.
+My weakness is not good at conversation in English (speaking and listening).
+
+My hobbies are researching new technology and apply to projects.
+Listening to Chinese music without vocal.
+
 What I am looking for is a company that I could add value to, where I could join a strong team.
-Is this what CMC is looking for?
+Is this what NashTech company is looking for?
+
+I think we can change the conversation to speak Vietnamese to easier
+
+SOLID
+Single-responsibility principle
+Open-closed principle
+Liskov substitution principle
+Interface segregation principle
+Dependency inversion principle
+
+OOP
+Encapsulation makes sure that "sensitive" data is hidden from users.
+Inheritance is useful for code reusability: reuse fields and methods of an existing class when you create a new class.
+Polymorphism means "many forms", and it occurs when we have many classes that are related to each other by inheritance.
+Abstraction is the process of hiding certain details and showing only essential information to the user.
 
 2. OOP
 Object-Oriented Programming is about creating objects that contain both data and methods.

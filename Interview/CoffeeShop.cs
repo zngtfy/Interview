@@ -68,33 +68,7 @@ namespace Interview
             return cost;
         }
 
-        public double CalculateCoffeeCostImprove(CoffeeOrder order)
-        {
-            if (order == null)
-            {
-                return 0;
-            }
 
-            var cost = 2.0; // init value for OtherBeanType
-
-            var costBeanType = _dicBeanType.GetValueOrDefault((int)order.BeanType);
-            if (costBeanType > 0)
-            {
-                cost = costBeanType;
-            }
-
-            if (order.IsDoubleShot)
-            {
-                cost *= 1.5;
-            }
-            if (order.HasMilk)
-            {
-                cost += 0.5;
-            }
-
-            cost += _dicCoffeeSize.GetValueOrDefault((int)order.BeanType);
-            return cost;
-        }
 
         private Dictionary<int, double> _dicBeanType;
         private Dictionary<int, double> _dicCoffeeSize;
