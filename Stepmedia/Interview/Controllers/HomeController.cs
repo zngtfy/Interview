@@ -12,9 +12,32 @@ namespace Interview.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        ITransientService _transientService1;
+        ITransientService _transientService2;
+
+        IScopedService _scopedService1;
+        IScopedService _scopedService2;
+
+        ISingletonService _singletonService1;
+        ISingletonService _singletonService2;
+
+        public HomeController(ILogger<HomeController> logger, ITransientService transientService1,
+                      ITransientService transientService2,
+                      IScopedService scopedService1,
+                      IScopedService scopedService2,
+                      ISingletonService singletonService1,
+                      ISingletonService singletonService2)
         {
             _logger = logger;
+
+            _transientService1 = transientService1;
+            _transientService2 = transientService2;
+
+            _scopedService1 = scopedService1;
+            _scopedService2 = scopedService2;
+
+            _singletonService1 = singletonService1;
+            _singletonService2 = singletonService2;
         }
 
         private void FindMax(int[] arr, int range1Min, int number = 10)
@@ -134,6 +157,18 @@ namespace Interview.Controllers
         {
             var vm = new NumberVm();
             vm.RequestNumber = RandNum();
+
+            ViewBag.message1 = "First Instance " + _transientService1.GetID().ToString();
+            ViewBag.message2 = "Second Instance " + _transientService2.GetID().ToString();
+
+
+            ViewBag.message3 = "First Instance " + _scopedService1.GetID().ToString();
+            ViewBag.message4 = "Second Instance " + _scopedService2.GetID().ToString();
+
+            ViewBag.message5 = "First Instance " + _singletonService1.GetID().ToString();
+            ViewBag.message6 = "Second Instance " + _singletonService2.GetID().ToString();
+
+
             return View(vm);
         }
 
@@ -194,6 +229,35 @@ namespace Interview.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+    }
+
+    public interface ITransientService
+    {
+        Guid GetID();
+    }
+
+    public interface IScopedService
+    {
+        Guid GetID();
+    }
+
+    public interface ISingletonService
+    {
+        Guid GetID();
+    }
+
+    public class SomeService : ITransientService, IScopedService, ISingletonService
+    {
+        Guid id;
+        public SomeService()
+        {
+            id = Guid.NewGuid();
+        }
+
+        public Guid GetID()
+        {
+            return id;
         }
     }
 }
